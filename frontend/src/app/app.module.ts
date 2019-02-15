@@ -6,13 +6,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
-import { OverlayContainer, FullscreenOverlayContainer } from '@angular/cdk/overlay';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
+
+import { CardRenderComponent } from './card-render/card-render.component';
+  
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainNavComponent
+    MainNavComponent,
+    CardRenderComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,9 +27,12 @@ import { OverlayContainer, FullscreenOverlayContainer } from '@angular/cdk/overl
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    OverlayContainer    
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
   ],
-  providers: [{provide: OverlayContainer, useClass: FullscreenOverlayContainer}],
+  providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }
