@@ -16,6 +16,8 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 const database = new sqlite3.Database("./my.db");
 
+const sqlSvc = require('./sqlite-service.js');
+
 const createUsersTable = () => {
     const sqlQuery = `
         CREATE TABLE IF NOT EXISTS users (
@@ -29,7 +31,7 @@ const createUsersTable = () => {
 }
 
 const findUserByEmail = (email, cb) => {
-    return database.get(`SELECT * FROM users WHERE email = ?`, [email], (err, row) => {
+    return database.get('SELECT * FROM users WHERE email = ?', [email], (err, row) => {
         cb(err, row)
     });
 }
@@ -39,11 +41,42 @@ const createUser = (user, cb) => {
         cb(err)
     });
 }
+const getGrades = (cb) => {
+    return database.all('SELECT * FROM grades', (err, rows) => {
+        cb(err, rows)
+    });
+}
+
+const getClassByGradeId = (gradeId, cb) => {
+    return database.all(`SELECT c.name, cs.shift FROM classes c 
+    JOIN class_studs cs ON c.id = cs.class_id
+    WHERE c.grade_id = ?`, [gradeId], (err, rows) => {
+        cb(err, rows)
+    });
+}
 
 createUsersTable();
 
 router.get('/', (req, res) => {
     res.status(200).send('This is an authentication server');
+});
+
+router.get('/grades', (req, res) => {
+    getGrades((err, rows) => {
+        if (err) return res.status(500).send('Server error!');
+        res.status(200).send({
+            "grades": rows
+        });
+    });
+});
+
+router.get('/classes/:gradeId', (req, res) => {
+    getClassByGradeId(req.params.gradeId,(err, rows) => {
+        if (err) return res.status(500).send('Server error!');
+        res.status(200).send({
+            "classes": rows
+        });
+    });
 });
 
 router.post('/register', (req, res) => {
