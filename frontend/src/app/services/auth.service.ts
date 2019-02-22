@@ -12,8 +12,7 @@ export class AuthService
     public login(body: any)
     {   
         let headerReq = new HttpHeaders({'Content-Type': 'application/json'});
-        //let body = {email: "user@email.com", password: "password"};
-        let response = this.http.post("http://localhost:3000/api/v1/login", body, {headers: headerReq} );
+        let response = this.http.post("http://localhost:3000/api/auth/login", body, {headers: headerReq} );
         response.subscribe(
             (value) => console.log("resp", value)
         );   
@@ -22,7 +21,7 @@ export class AuthService
     public register (body:any)
     {
         let headerReq = new HttpHeaders({'Content-Type': 'application/json' });
-        let response = this.http.post("http://localhost:3000/api/v1/register", body, {headers: headerReq} );
+        let response = this.http.post("http://localhost:3000/api/auth/register", body, {headers: headerReq} );
         response.subscribe(
             (value) => console.log("resp", value)
         
