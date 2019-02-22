@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
-
+import { MainRenderComponent } from './main-render/main-render.component';
 import { CardRenderComponent } from './card-render/card-render.component';
   
 
@@ -15,6 +15,7 @@ import { CardRenderComponent } from './card-render/card-render.component';
   declarations: [
     AppComponent,
     MainNavComponent,
+    MainRenderComponent,
     CardRenderComponent,
   ],
   imports: [
