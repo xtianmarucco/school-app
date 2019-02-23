@@ -4,7 +4,7 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar class="menu-style">Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#">1° AÑO</a>
       <a mat-list-item href="#">2° AÑO</a>
@@ -25,10 +25,10 @@
       </button>
       <span>school-app</span>
       
-        <ul>
-        <li>Auxiliar</li>
-        <li><button mat-raised-button >cerrar sesion</button></li>
-        </ul>
+        
+        <div> <h1>Auxiliar</h1></div>
+        <div><button mat-raised-button >cerrar sesion</button></div> 
+       
       
     </mat-toolbar>
   
