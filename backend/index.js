@@ -48,7 +48,7 @@ const getGrades = (cb) => {
 }
 
 const getClassByGradeId = (gradeId, cb) => {
-    return database.all(`SELECT c.name, cs.shift FROM classes c 
+    return database.all(`SELECT c.id, c.name, cs.shift FROM classes c 
     JOIN class_studs cs ON c.id = cs.class_id
     WHERE c.grade_id = ?`, [gradeId], (err, rows) => {
         cb(err, rows)
@@ -58,10 +58,10 @@ const getClassByGradeId = (gradeId, cb) => {
 createUsersTable();
 
 router.get('/', (req, res) => {
-    res.status(200).send('This is an authentication server');
+    res.status(200).send('This is school-app server');
 });
 
-router.get('/grades', (req, res) => {
+router.get('/api/v1/grades', (req, res) => {
     getGrades((err, rows) => {
         if (err) return res.status(500).send('Server error!');
         res.status(200).send({
@@ -70,7 +70,7 @@ router.get('/grades', (req, res) => {
     });
 });
 
-router.get('/classes/:gradeId', (req, res) => {
+router.get('/api/v1/classes/:gradeId', (req, res) => {
     getClassByGradeId(req.params.gradeId,(err, rows) => {
         if (err) return res.status(500).send('Server error!');
         res.status(200).send({
@@ -79,7 +79,7 @@ router.get('/classes/:gradeId', (req, res) => {
     });
 });
 
-router.post('/register', (req, res) => {
+router.post('api/auth/register', (req, res) => {
 
     const name = req.body.name;
     const email = req.body.email;
@@ -101,7 +101,7 @@ router.post('/register', (req, res) => {
 });
 
 
-router.post('/login', (req, res) => {
+router.post('api/auth/login', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     findUserByEmail(email, (err, user) => {
