@@ -39,8 +39,7 @@ box-shadow: 0px 6px 39px -5px rgba(130,143,148,1);
   
   .register-item {
       color: #ffff;
-      padding:25px 25px 0;
-      margin: 20px 20px 0;	
+     	
      
   }
   
@@ -63,29 +62,25 @@ box-shadow: 0px 6px 39px -5px rgba(130,143,148,1);
   border-bottom:1px solid #757575;
 }
 .form input[type="submit"] { 
-  width: 100px ;
-  margin-left: 280px  ;
+ 
+  background-color: #1da79b;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 100%
  }
 
+ 
 input:focus 		{ outline:none; }
-  
-  
-  .form-register label,
+
+
   .form-register input[type="email"],
   .form-register input[type="password"],
   .form-register input[type="submit"] {
-    border-radius: 0.25rem;
+    
     padding: 1rem;
-    color: #3A3F44;  
-  }
-  
-  .form-register label {
-    padding-right: 15px;
-    background-color: #222222;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    color: white;  
+    margin-top: 2rem ;
   }
   
   .form-register input[type="email"], .form-register input[type="password"] {
@@ -94,24 +89,96 @@ input:focus 		{ outline:none; }
     border-top-left-radius: 0;
   }
   .form-register input[type="email"]:focus, .form-register input[type="email"]:hover, .form-register input[type="password"]:focus, .form-register input[type="password"]:hover {
-    background-color: #eeeeee;
+    background-color:#eeeeee;
   }
+
+  .form-register input[type="email"]:focus, .form-register input[type="email"]:hover, .form-register input[type="password"]:focus, .form-register input[type="password"]:hover {
+    background-color:rgb(226, 226, 226);
+  }
+  
   .form-register input[type="submit"] {
-    
+    background-color: #1da79b ;
     color: #eee;
     font-weight: bold;
     text-transform: uppercase;
+    width: 100%;
+    
   }
   .form-register input[type="submit"]:focus, .form-register input[type="submit"]:hover {
-    background-color: #120a2e;
+    background-color: #15857b;
   }
+
   .form-field {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+  
+  }
+  .register-user {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 2rem;
+    margin-left: 0;
+  }
+  
+  .hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .text--center {
+    text-align: center;
+  }
+
+  input {
+    border: 0;
+    color: inherit;
+    font: inherit;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+  }
+   
+  
+  .form input[type="password"], .form input[type="email"], .form input[type="submit"] {
+    width: 100%;
+  }
+  .form-register input[type="email"], .form-register input[type="password"] {
+    background-color: #ffffff;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  .form-register input[type="email"]:focus, .form-register input[type="email"]:hover, .form-register input[type="password"]:focus, .form-register input[type="password"]:hover {
+    background-color:rgb(226, 226, 226);
+  }
+
+  .form-register input[type="submit"]:focus, .form-register input[type="submit"]:hover {
+    background-color: #15857b;}
+
+  .form-register input[type="submit"] {
+    background-color: #1da79b ;
+    color: #eee;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  .register-user {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 2rem;
+    margin-left: 0;
   }
   
   
@@ -129,5 +196,10 @@ input:focus 		{ outline:none; }
   .text--center {
     text-align: center;
   }
-
   
+  .form-login{
+    
+   padding-top: 15px;
+    margin-bottom: initial;
+    margin-top: 45px;
+  }
