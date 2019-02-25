@@ -6,11 +6,7 @@
       [opened]="!(isHandset$ | async)">
     <mat-toolbar class="menu-style">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">1° AÑO</a>
-      <a mat-list-item href="#">2° AÑO</a>
-      <a mat-list-item href="#">3° AÑO</a>
-      <a mat-list-item href="#">4° AÑO</a>
-      <a mat-list-item href="#">5° AÑO</a>
+      <a mat-list-item *ngFor="let grade of gradesList" (click)="onItemClick(grade.id)"> {{ grade.name }} </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -32,7 +28,7 @@
       
     </mat-toolbar>
   
-        <app-card-render></app-card-render>
+      <app-card-render [classListSource]="classesList"></app-card-render>
 
   </mat-sidenav-content>
 </mat-sidenav-container>
