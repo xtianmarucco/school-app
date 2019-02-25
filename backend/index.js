@@ -48,8 +48,7 @@ const getGrades = (cb) => {
 }
 
 const getClassByGradeId = (gradeId, cb) => {
-    return database.all(`SELECT c.id, c.name, cs.shift FROM classes c 
-    JOIN class_studs cs ON c.id = cs.class_id
+    return database.all(`SELECT c.id, c.name, c.shift FROM classes c 
     WHERE c.grade_id = ?`, [gradeId], (err, rows) => {
         cb(err, rows)
     });
