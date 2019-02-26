@@ -1,34 +1,34 @@
-
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
     <mat-toolbar class="menu-style">Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item *ngFor="let grade of gradesList" (click)="onItemClick(grade.id)"> {{ grade.name }} </a>
     </mat-nav-list>
+    <div style="height:20px;
+    background-clip: black">crear curso</div>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>school-app</span>
-      
-        
-        <div> <h1>Auxiliar</h1></div>
-        <div><button mat-raised-button >cerrar sesion</button></div> 
-       
-      
+
+
+      <div style="float: right">
+        <span>
+          <h1>Auxiliar</h1>
+        </span>
+        <div><button mat-raised-button>cerrar sesion</button></div>
+      </div>
+
+
     </mat-toolbar>
-  
-      <app-card-render [classListSource]="classesList"></app-card-render>
+
+    <app-card-render [classListSource]="classesList"></app-card-render>
 
   </mat-sidenav-content>
 </mat-sidenav-container>

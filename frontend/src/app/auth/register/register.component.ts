@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
  register(form) {
-  let body = {email: form.value.email, name: form.value.name, password: form.value.password};
+  let body = {email: form.value.email, name: form.value.name, password: form.value.password, role: form.value.role};
   let resp = this.auth.register(body);
  }
   

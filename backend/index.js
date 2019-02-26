@@ -82,9 +82,10 @@ router.post('api/auth/register', (req, res) => {
 
     const name = req.body.name;
     const email = req.body.email;
+    const role = req.bady.role;
     const password = bcrypt.hashSync(req.body.password);
 
-    createUser([name, email, password], (err) => {
+    createUser([name, email, role, password], (err) => {
         if (err) return res.status(500).send("Server error!");
         findUserByEmail(email, (err, user) => {
             if (err) return res.status(500).send('Server error!');
