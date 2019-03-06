@@ -1,5 +1,7 @@
 .sidenav-container {
   height: 100%;
+  position:sticky;
+  display: flow ;
   
   background-color: white;
 }
@@ -27,8 +29,31 @@ box-shadow: 0px 6px 39px -5px rgba(130,143,148,1);
 }
  
 .menu-style{
-  background-color: #15857b;
+  background-color: #0f5d57;
 }
 
  
+.mat-list{ 
+  
+  display: inherit;
+ justify-items: flex-end;
 
+}
+.section{
+  float: right;
+  width: 100%;
+  display: flex;
+}
+.card-render{
+  width: -webkit-fill-available;
+}
+
+.add-btn{
+  background-color:#0d4e49 ;
+  display: inline;
+  margin-left: 45px;
+  margin-top: 45px;
+}
+.logoff-btn{
+  background-color:#0d4e49 ;
+}

@@ -1,6 +1,7 @@
 .grid-container {
-  width: 40%;
   margin: 20px;
+  width: 100%;
+  width: -webkit-fill-available;
 }
 
 
