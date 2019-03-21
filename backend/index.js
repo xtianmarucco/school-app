@@ -37,7 +37,7 @@ const findUserByEmail = (email, cb) => {
 }
 
 const createUser = (user, cb) => {
-    return database.run('INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)', user, (err) => {
+    return database.run('INSERT INTO users (name, email, role, password) VALUES (?,?,?,?)', user, (err) => {
         cb(err)
     });
 }
@@ -50,8 +50,8 @@ const getGrades = (cb) => {
 const getClassByGradeId = (gradeId, cb) => {
     return database.all(`SELECT c.id, c.name, c.shift FROM classes c 
     WHERE c.grade_id = ?`, [gradeId], (err, rows) => {
-        cb(err, rows)
-    });
+            cb(err, rows)
+        });
 }
 
 createUsersTable();
@@ -70,7 +70,7 @@ router.get('/api/v1/grades', (req, res) => {
 });
 
 router.get('/api/v1/classes/:gradeId', (req, res) => {
-    getClassByGradeId(req.params.gradeId,(err, rows) => {
+    getClassByGradeId(req.params.gradeId, (err, rows) => {
         if (err) return res.status(500).send('Server error!');
         res.status(200).send({
             "classes": rows
@@ -82,7 +82,7 @@ router.post('/api/auth/register', (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
     const role = req.body.role;
-    const password = bcrypt.hashSync(req.body.password);
+    const password = req.body.password; // bcrypt. hashSync(req.body.password);
 
     createUser([name, email, role, password], (err) => {
         if (err) return res.status(500).send("Server error!");
@@ -102,18 +102,20 @@ router.post('/api/auth/register', (req, res) => {
 
 router.post('/api/auth/login', (req, res) => {
     const email = req.body.email;
-    const password = req.body.password;
+    const password = req.body.password; // bcrypt.hashSync(req.body.password);
     findUserByEmail(email, (err, user) => {
         if (err) return res.status(500).send('Server error!');
         if (!user) return res.status(404).send('User not found!');
-        const result = bcrypt.compareSync(password, user.password);
+        const result = password == user.password;
         if (!result) return res.status(401).send('Password not valid!');
 
         const expiresIn = 24 * 60 * 60;
         const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, {
             expiresIn: expiresIn
         });
-        res.status(200).send({ "user": user, "access_token": accessToken, "expires_in": expiresIn });
+        res.status(200).send({ 
+            "user": user, "access_token": accessToken, "expires_in": expiresIn 
+        });
     });
 });
 
