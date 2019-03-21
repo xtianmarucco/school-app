@@ -27,12 +27,15 @@
       <div class="form-field">
         <label class="lock" for="register-role"><span class="hidden">Role</span></label>
         <!-- <input name="role" id="register-role" type="role" class="form-input" placeholder="Eliga su role" ngModel required> -->
-        <select matNativeControl placeholder="" required>
+        <select [(ngModel)]="selectedOption" name="role" matNativeControl placeholder="" required> 
             <option value="" disabled selected>Elija su rol</option>
-          <option value="auxiliar">Auxiliar</option>
-          <option value="docente">Docente</option>
+          <option value="auxiliar">auxiliar</option>
+          <option value="docente"> docente</option>
         </select>
-        
+                <!-- <input name="role" id="register-role" type="role" class="form-input" placeholder="Eliga su role" ngModel required>
+                
+                el ngMODEL manda la opcion elegida ROLE que puede tener dos valores AUX o DOCE -->
+
       </div>
 
       <div class="form-field">
