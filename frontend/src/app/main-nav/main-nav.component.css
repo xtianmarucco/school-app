@@ -55,4 +55,16 @@ box-shadow: 0px 6px 39px -5px rgba(130,143,148,1);
 }
 .logoff-btn{
   background-color:#0d4e49 ;
+  margin-right:15px; 
+}
+
+
+.wrap {
+  padding-top: 15px;
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.role{
+  padding-right: 15px;
 }

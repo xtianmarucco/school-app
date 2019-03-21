@@ -10,6 +10,8 @@ import { CardRenderComponent } from './card-render/card-render.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { StudentsTableComponent } from './students-table/students-table.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     StudentsTableComponent,
   ],
   imports: [
+    MatFormFieldModule,
     FlexLayoutModule,
     BrowserModule,
     AppRoutingModule,
