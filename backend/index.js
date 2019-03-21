@@ -37,7 +37,7 @@ const findUserByEmail = (email, cb) => {
 }
 
 const createUser = (user, cb) => {
-    return database.run('INSERT INTO users (name, email, password) VALUES (?,?,?)', user, (err) => {
+    return database.run('INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)', user, (err) => {
         cb(err)
     });
 }
@@ -78,11 +78,10 @@ router.get('/api/v1/classes/:gradeId', (req, res) => {
     });
 });
 
-router.post('api/auth/register', (req, res) => {
-
+router.post('/api/auth/register', (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
-    const role = req.bady.role;
+    const role = req.body.role;
     const password = bcrypt.hashSync(req.body.password);
 
     createUser([name, email, role, password], (err) => {
@@ -101,7 +100,7 @@ router.post('api/auth/register', (req, res) => {
 });
 
 
-router.post('api/auth/login', (req, res) => {
+router.post('/api/auth/login', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     findUserByEmail(email, (err, user) => {
